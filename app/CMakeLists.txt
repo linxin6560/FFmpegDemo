@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.4.1)
+file(GLOB my_source src/main/cpp/*.cpp)
 add_library( native-lib
              SHARED
-             src/main/cpp/native-lib.cpp )
+             ${my_source} )
 find_library( log-lib
               log )
 include_directories(libs/include)
@@ -63,4 +64,5 @@ target_link_libraries( native-lib
                        swresample-1
                        swscale-3
                        avfilter-5
+                       android
                        ${log-lib} )
